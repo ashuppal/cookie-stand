@@ -1,7 +1,7 @@
 'use strict';
 
-// #pragma: GLOBAL VARIABLES + WINDOW INTO DOM
-// FOR LAB CREATE A GLOBAL ARRAY WITH SHOP HOURS
+//GLOBAL VARIABLES + WINDOW INTO DOM
+
 
 let shopHours = [
   '6am',
@@ -21,55 +21,50 @@ let shopHours = [
   '8pm'
 ];
 
-function randomCookie () {
-  let cookieAvg = [];
-
-  for (let i = 0; i < shopHours.length; i++) {
-    let randomCookie = Math.floor(Math.random() * 200);
-    cookieAvg.push(randomCookie);
-  }
-
-  return cookieAvg;
-}
-
 //**  DOM MANIPULATION STEP 1: WINDOW INTO THE DOM
 
 let shopSection = document.getElementById('shopProfiles');
 
 console.dir(shopSection);
 
-// #pragma: HELPER FUNCTIONS - UTILITIES
+// HELPER FUNCTIONS - UTILITIES
 
 // grabbed from MDN docs
-function randomMinCust (min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+function randomCust(min, max) {
+  let customers = [];
+  for (let i = 0; i < shopHours.length; i++) {
+    let randomCustomers = Math.floor(Math.random() * (max - min + 1) + min);
+    customers.push(randomCustomers);
+  }
+  return customers;
 }
-function randomMaxCust (min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+
+function randomCookie (customersArr, cookiesSold) {
+  let cookieAvg = [];
+  console.log(customersArr);
+
+  for (let i = 0; i < customersArr.length; i++) {
+    let randomCookie = Math.ceil(customersArr[i] * cookiesSold);
+    cookieAvg.push(randomCookie);
+  }
+
+  return cookieAvg;
 }
-// #pragma: OBJECT LITERALS
+// OBJECT LITERALS
 
 
 
 let seattleShop = {
   location: 'Seattle',
-  minCustomer: 0,
-  maxCustomer: 0,
-  avgCookieSale: 0,
-  cust1: randomMinCust(1, 100),
-  cust2: randomMaxCust(1, 100),
+  minCustomer: 23,
+  maxCustomer: 65,
+  avgCookieSale: 6.3,
+  cust: [],
   cookies: [],
 
   render: function () {
-    this.cookies = randomCookie();
+    this.cookies = randomCookie(this.cust, this.avgCookieSale);
 
-    if (this.cust1 > this.cust2) {
-      this.maxCustomer = this.cust1;
-      this.minCustomer = this.cust2;
-    } else {
-      this.maxCustomer = this.cust2;
-      this.minCustomer = this.cust1;
-    }
     // ********* DOM MANIPULATION **********
     // ** STEP 2: CREATE THE ELEMENT
 
@@ -78,49 +73,48 @@ let seattleShop = {
     // skip for articleElem
 
     // ** STEP 4: ADD IT TO THE DOM ---> parent.appendChild(child)
-
     shopSection.appendChild(articleElem);
 
     //create h2 element
 
-    let h2Elem = document.createElement('h2');
-    h2Elem.textContent = this.location;
+    let h2Elem = document.createElement('h2'); 
+    h2Elem.textContent = this.location; 
     articleElem.appendChild(h2Elem);
-
-    //create unordered list
+     //create unordered list
 
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
-
     for (let i = 0; i < shopHours.length; i++) {
-      let liElem = document.createElement('li');
+      let liElem = document.createElement('li'); // <li></li>
       liElem.textContent = `${shopHours[i]}: ${this.cookies[i]} cookies`;
       ulElem.appendChild(liElem);
     }
   }
 };
-
+seattleShop.cust = randomCust(seattleShop.minCustomer, seattleShop.maxCustomer);
 seattleShop.render();
+
+
+//**  DOM MANIPULATION STEP 1: WINDOW INTO THE DOM
+
+
+// HELPER FUNCTIONS - UTILITIES
+
+// OBJECT LITERALS
+
+
 
 let tokyoShop = {
   location: 'Tokyo',
-  minCustomer: 0,
-  maxCustomer: 0,
-  avgCookieSale: 0,
-  cust1: randomMinCust(1, 80),
-  cust2: randomMaxCust(1, 100),
+  minCustomer: 23,
+  maxCustomer: 65,
+  avgCookieSale: 6.3,
+  cust: [],
   cookies: [],
 
   render: function () {
-    this.cookies = randomCookie();
+    this.cookies = randomCookie(this.cust, this.avgCookieSale);
 
-    if (this.cust1 > this.cust2) {
-      this.maxCustomer = this.cust1;
-      this.minCustomer = this.cust2;
-    } else {
-      this.maxCustomer = this.cust2;
-      this.minCustomer = this.cust1;
-    }
     // ********* DOM MANIPULATION **********
     // ** STEP 2: CREATE THE ELEMENT
 
@@ -129,49 +123,40 @@ let tokyoShop = {
     // skip for articleElem
 
     // ** STEP 4: ADD IT TO THE DOM ---> parent.appendChild(child)
-
     shopSection.appendChild(articleElem);
 
     //create h2 element
 
-    let h2Elem = document.createElement('h2');
-    h2Elem.textContent = this.location;
+    let h2Elem = document.createElement('h2'); 
+    h2Elem.textContent = this.location; 
     articleElem.appendChild(h2Elem);
 
     //create unordered list
 
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
-
     for (let i = 0; i < shopHours.length; i++) {
-      let liElem = document.createElement('li');
+      let liElem = document.createElement('li'); // <li></li>
       liElem.textContent = `${shopHours[i]}: ${this.cookies[i]} cookies`;
       ulElem.appendChild(liElem);
     }
   }
 };
+tokyoShop.cust = randomCust(tokyoShop.minCustomer, tokyoShop.maxCustomer);
 tokyoShop.render();
 
 
 let dubaiShop = {
   location: 'Dubai',
-  minCustomer: 0,
-  maxCustomer: 0,
-  avgCookieSale: 0,
-  cust1: randomMinCust(1, 80),
-  cust2: randomMaxCust(1, 100),
+  minCustomer: 23,
+  maxCustomer: 65,
+  avgCookieSale: 6.3,
+  cust: [],
   cookies: [],
 
   render: function () {
-    this.cookies = randomCookie();
+    this.cookies = randomCookie(this.cust, this.avgCookieSale);
 
-    if (this.cust1 > this.cust2) {
-      this.maxCustomer = this.cust1;
-      this.minCustomer = this.cust2;
-    } else {
-      this.maxCustomer = this.cust2;
-      this.minCustomer = this.cust1;
-    }
     // ********* DOM MANIPULATION **********
     // ** STEP 2: CREATE THE ELEMENT
 
@@ -180,49 +165,39 @@ let dubaiShop = {
     // skip for articleElem
 
     // ** STEP 4: ADD IT TO THE DOM ---> parent.appendChild(child)
-
     shopSection.appendChild(articleElem);
 
     //create h2 element
 
-    let h2Elem = document.createElement('h2');
-    h2Elem.textContent = this.location;
+    let h2Elem = document.createElement('h2'); 
+    h2Elem.textContent = this.location; 
     articleElem.appendChild(h2Elem);
-
+    
     //create unordered list
 
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
-
     for (let i = 0; i < shopHours.length; i++) {
-      let liElem = document.createElement('li');
+      let liElem = document.createElement('li'); // <li></li>
       liElem.textContent = `${shopHours[i]}: ${this.cookies[i]} cookies`;
       ulElem.appendChild(liElem);
     }
   }
 };
+dubaiShop.cust = randomCust(dubaiShop.minCustomer, dubaiShop.maxCustomer);
 dubaiShop.render();
-
 
 let parisShop = {
   location: 'Paris',
-  minCustomer: 0,
-  maxCustomer: 0,
-  avgCookieSale: 0,
-  cust1: randomMinCust(1, 80),
-  cust2: randomMaxCust(1, 100),
+  minCustomer: 23,
+  maxCustomer: 65,
+  avgCookieSale: 6.3,
+  cust: [],
   cookies: [],
 
   render: function () {
-    this.cookies = randomCookie();
+    this.cookies = randomCookie(this.cust, this.avgCookieSale);
 
-    if (this.cust1 > this.cust2) {
-      this.maxCustomer = this.cust1;
-      this.minCustomer = this.cust2;
-    } else {
-      this.maxCustomer = this.cust2;
-      this.minCustomer = this.cust1;
-    }
     // ********* DOM MANIPULATION **********
     // ** STEP 2: CREATE THE ELEMENT
 
@@ -231,49 +206,40 @@ let parisShop = {
     // skip for articleElem
 
     // ** STEP 4: ADD IT TO THE DOM ---> parent.appendChild(child)
-
     shopSection.appendChild(articleElem);
 
     //create h2 element
 
-    let h2Elem = document.createElement('h2');
-    h2Elem.textContent = this.location;
+    let h2Elem = document.createElement('h2'); 
+    h2Elem.textContent = this.location; 
     articleElem.appendChild(h2Elem);
-
+    
     //create unordered list
 
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
-
     for (let i = 0; i < shopHours.length; i++) {
-      let liElem = document.createElement('li');
+      let liElem = document.createElement('li'); // <li></li>
       liElem.textContent = `${shopHours[i]}: ${this.cookies[i]} cookies`;
       ulElem.appendChild(liElem);
     }
   }
 };
+parisShop.cust = randomCust(parisShop.minCustomer, parisShop.maxCustomer);
 parisShop.render();
 
 
 let limaShop = {
   location: 'Lima',
-  minCustomer: 0,
-  maxCustomer: 0,
-  avgCookieSale: 0,
-  cust1: randomMinCust(1, 80),
-  cust2: randomMaxCust(1, 100),
+  minCustomer: 23,
+  maxCustomer: 65,
+  avgCookieSale: 6.3,
+  cust: [],
   cookies: [],
 
   render: function () {
-    this.cookies = randomCookie();
+    this.cookies = randomCookie(this.cust, this.avgCookieSale);
 
-    if (this.cust1 > this.cust2) {
-      this.maxCustomer = this.cust1;
-      this.minCustomer = this.cust2;
-    } else {
-      this.maxCustomer = this.cust2;
-      this.minCustomer = this.cust1;
-    }
     // ********* DOM MANIPULATION **********
     // ** STEP 2: CREATE THE ELEMENT
 
@@ -282,26 +248,24 @@ let limaShop = {
     // skip for articleElem
 
     // ** STEP 4: ADD IT TO THE DOM ---> parent.appendChild(child)
-
     shopSection.appendChild(articleElem);
 
     //create h2 element
 
-    let h2Elem = document.createElement('h2');
-    h2Elem.textContent = this.location;
+    let h2Elem = document.createElement('h2'); 
+    h2Elem.textContent = this.location; 
     articleElem.appendChild(h2Elem);
-
+    
     //create unordered list
 
     let ulElem = document.createElement('ul');
     articleElem.appendChild(ulElem);
-
     for (let i = 0; i < shopHours.length; i++) {
-      let liElem = document.createElement('li');
+      let liElem = document.createElement('li'); // <li></li>
       liElem.textContent = `${shopHours[i]}: ${this.cookies[i]} cookies`;
       ulElem.appendChild(liElem);
     }
   }
 };
+limaShop.cust = randomCust(limaShop.minCustomer, limaShop.maxCustomer);
 limaShop.render();
-
