@@ -47,6 +47,7 @@ function randomMaxCust (min, max) {
 }
 // #pragma: OBJECT LITERALS
 
+
 let seattleShop = {
   location: 'Seattle',
   minCustomer: 0,
