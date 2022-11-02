@@ -12,7 +12,7 @@
     "node": true
   },
   "rules": {
-    "no-var": "error",
+    "no-let": "error",
     "eqeqeq": ["error", "always"],
     "no-console": "off",
     "no-undefined": "off",
@@ -22,7 +22,7 @@
       "warn",
       {
         "exceptions": {
-          "VariableDeclarator": true
+          "letiableDeclarator": true
         }
       }
     ],
