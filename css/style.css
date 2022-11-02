@@ -31,7 +31,7 @@ h1{
   }
 
   ul{
-    color:rgb(61, 43, 196);
+    color:rgb(225, 145, 75);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 150%;
     margin-left: 50px;;
@@ -40,13 +40,18 @@ h1{
 
   tr {
  
-    background-color: #E17545;
+    background-color: #e5a22e;
   }
   
   th {
     padding: 5px;
+    border: 2px dotted;
+    border-color: rgb(170, 93, 10);
+
   }
   
   td {
     padding: 8px;
+    border: 2px dotted;
+    border-color:rgb(170, 93, 10);
   }
