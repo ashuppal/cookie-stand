@@ -103,18 +103,10 @@ h1{
     padding-left: 20px;
   }
 
-  /* section p{
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-between;
-  } */
-
+ 
 
   p{
     margin-top: 50px;
-    /* height:300px;
-    display: flex;
-    flex-direction: row; */
     line-height: 2em;
 font-family: 'Merriweather', serif;
 
@@ -124,3 +116,26 @@ font-family: 'Merriweather', serif;
   max-width: 50%;
   height:auto;
  }
+
+ form{
+
+  border: 3px solid rgb(249, 106, 44);
+  margin-bottom: 30px;
+  margin-top: 50px;
+ }
+
+input {
+  /* display: block; */
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+main img{
+  margin-top: 20px;
+}
+
+button:hover{
+
+  background-color: #e5a22e;
+  
+}

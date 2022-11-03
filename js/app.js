@@ -6,11 +6,10 @@ let allStores = [];
 
 let tableElem = document.getElementById('tables');
 
-//  HELPER FUNCTIONS - UTILITIES
+//Form Event Step1
 
-function randomCustNum(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-}
+let newShopForm =document.getElementById('newShopForm')
+console.log(newShopForm);
 
 // #pragma: OBJECT LITERALS
 
@@ -54,6 +53,13 @@ let paris = new Store('Paris', 20, 38, 2.3);
 let lima = new Store('Lima', 2, 16, 4.6);
 
 
+//helper functions
+
+
+function randomCustNum(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 
 function headerInfo() {
 
@@ -65,6 +71,8 @@ function headerInfo() {
   firstCell.textContent = "Location"
   tableRow.appendChild(firstCell);
  
+
+
   for (let i = 0; i < hours.length; i++) {
     let tableData = document.createElement('td');
     tableData.textContent = hours[i];
@@ -73,12 +81,15 @@ function headerInfo() {
     let lastCell = document.createElement('td');
     lastCell.textContent = "Total/day"
     tableRow.appendChild(lastCell);
+
 }
 
-// tableRow.appendChild(lastCell);
 
 function footerInfo() {
+
+ 
   let tableRow = document.createElement('tr');
+  tableRow.id = "footerRow";
 
   let tableHeader = document.createElement('th');
   tableHeader.textContent = 'Total/hour';
@@ -126,3 +137,26 @@ lima.randomCookies();
 lima.render();
 
 footerInfo();
+
+
+//step 3 
+function handleSubmit(event){
+  
+  event.preventDefault();
+
+  let storeLocation = event.target.storeLocation.value;
+  let maxCustomer = event.target.maxCust.value;
+  let minCustomer = event.target.minCust.value;
+  let avgCookie = event.target.avgCookies.value;
+
+  let newLocation = new Store(storeLocation,minCustomer,maxCustomer,avgCookie);
+  newLocation.randomCookies();
+  newLocation.render();
+  newShopForm.reset();
+  document.getElementById("footerRow").remove();
+  footerInfo();
+}
+//step 2 attach event listner
+newShopForm.addEventListener('submit',handleSubmit)
+
+//  HELPER FUNCTIONS - UTILITIES
