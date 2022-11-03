@@ -65,21 +65,23 @@ function headerInfo() {
   firstCell.textContent = "Location"
   tableRow.appendChild(firstCell);
  
-  for (let i = 0; i < hours.length+1; i++) {
+  for (let i = 0; i < hours.length; i++) {
     let tableData = document.createElement('td');
     tableData.textContent = hours[i];
     tableRow.appendChild(tableData);
     }
+    let lastCell = document.createElement('td');
+    lastCell.textContent = "Total/day"
+    tableRow.appendChild(lastCell);
 }
-let lastCell = document.createElement('td');
-lastCell.textContent = "Location"
+
 // tableRow.appendChild(lastCell);
 
 function footerInfo() {
   let tableRow = document.createElement('tr');
 
   let tableHeader = document.createElement('th');
-  tableHeader.textContent = 'Total';
+  tableHeader.textContent = 'Total/hour';
   tableRow.appendChild(tableHeader);
 
   let grandTotal = 0;
