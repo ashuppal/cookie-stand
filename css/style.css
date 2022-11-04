@@ -1,6 +1,6 @@
 
 body{
-  background-color: rgb(195, 198, 234);
+  background-color: rgb(179, 184, 244);
 }
 
 h1{
@@ -32,6 +32,7 @@ h1{
   }
 
   ul{
+    padding-top: 20px;
     color:rgb(225, 145, 75);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 150%;
@@ -41,26 +42,33 @@ h1{
 
   tr {
  
-    background-color: #e5a22e;
+    background-color: #b39ee5;
     text-align: center;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+
   }
   
   th {
     margin-top: 50px;
     padding: 20px;
     border: 2px dotted;
-    border-color: rgb(170, 93, 10);
+    border-color: rgb(91, 37, 228);
+   
 
   }
   
   td {
     padding: 20px;
     border: 2px dotted;
-    border-color:rgb(170, 93, 10);
+    border-color:rgb(91, 37, 228);
+    font-family: 'Merriweather', serif;
+    font-style: italic;
   }
 
   header{
-    background-color: #ffd387;
+    padding-top: 20px;
+    background-color: #8989f3;
   }
 
   nav{
@@ -70,6 +78,7 @@ h1{
     flex-direction: row;
     justify-content: center;
     margin: auto;
+
    
   }
 
@@ -79,7 +88,8 @@ h1{
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-  
+   
+    font-family: 'Merriweather', serif;
   }
 
   main{
@@ -92,7 +102,12 @@ h1{
     justify-content: space-between;
   }
 
+ .familyphoto{
+    max-width: 100%;
+    height: auto;
   
+
+  }
 
   section img{
   
@@ -100,7 +115,8 @@ h1{
     padding-top: 50px;
     max-width: 30%;
     height:auto;
-    padding-left: 20px;
+    /* padding-left: 20px; */
+    align-items: center;
   }
 
  
@@ -113,15 +129,17 @@ font-family: 'Merriweather', serif;
 
   }
  article img{
+  margin-top:auto;
   max-width: 50%;
   height:auto;
  }
 
  form{
 
-  border: 3px solid rgb(249, 106, 44);
+  border: 3px solid rgb(126, 44, 249);
   margin-bottom: 30px;
   margin-top: 50px;
+  background-color: #8989f3;
  }
 
 input {
@@ -139,3 +157,4 @@ button:hover{
   background-color: #e5a22e;
   
 }
+
